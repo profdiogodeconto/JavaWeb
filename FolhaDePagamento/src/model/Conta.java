@@ -1,6 +1,6 @@
 package model;
 
-public class FolhaDePagamento {
+public class Conta {
 
 	private int id;
 	private String nome;
