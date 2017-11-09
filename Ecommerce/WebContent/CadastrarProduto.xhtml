@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-	<meta charset="UTF-8">
+	<meta charset="UTF-8" />
 	<title>Cadastrar Produto</title>
 </h:head>
 
 <h:body>
-	<h:outputLabel value="Nome:"></h:outputLabel>
-	<h:inputText></h:inputText>
-	<h:outputLabel value="Preço:"></h:outputLabel>
-	<h:inputText></h:inputText>
-	<h:outputLabel value="Quantidade:"></h:outputLabel>
-	<h:inputText></h:inputText>
-	<h:outputLabel value="Categoria:"></h:outputLabel>
-	<h:inputText></h:inputText>
-	
-	<h:commandButton value="Cadastrar Produto">
-	</h:commandButton>
-	
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Nome:"></h:outputLabel>
+			<h:inputText></h:inputText>
+			<h:outputLabel value="Preço:"></h:outputLabel>
+			<h:inputText></h:inputText>
+			<h:outputLabel value="Quantidade:"></h:outputLabel>
+			<h:inputText></h:inputText>
+			<h:outputLabel value="Categoria:"></h:outputLabel>
+			<h:inputText></h:inputText>
+			<h:commandButton value="Cadastrar Produto">
+			</h:commandButton>
+		</h:panelGrid>
+	</h:form>
 </h:body>
 </html>
