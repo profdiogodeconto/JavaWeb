@@ -12,7 +12,7 @@ public class ProdutoDAO {
 		if (produtos.size() > 0) {
 			int id = produtos.get(produtos.size() - 1).getId() + 1;
 			produto.setId(id);
-		}else{
+		} else {
 			produto.setId(1);
 		}
 		if (buscarProdutoPorNome(produto) == null) {
@@ -36,38 +36,32 @@ public class ProdutoDAO {
 		return null;
 	}
 
-	public static Produto buscarProdutoPorId(int idProduto){
+	public static Produto buscarProdutoPorId(int idProduto) {
 		for (Produto produtoCadastrado : produtos) {
-			if(produtoCadastrado.getId() == idProduto){
+			if (produtoCadastrado.getId() == idProduto) {
 				return produtoCadastrado;
 			}
 		}
 		return null;
 	}
-	
-	public static boolean removerProduto(int idProduto){
+
+	public static boolean removerProduto(int idProduto) {
 		Produto p = buscarProdutoPorId(idProduto);
-		if(p == null){
+		if (p == null) {
 			return false;
 		}
 		produtos.remove(p);
 		return true;
 	}
-	
+
+	public static boolean alterarProduto(Produto produto) {
+		for (int i = 0; i < produtos.size(); i++) {
+			if (produto.getId() == produtos.get(i).getId()) {
+				produtos.set(i, produto);
+				return true;
+			}
+		}
+		return false;
+	}
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

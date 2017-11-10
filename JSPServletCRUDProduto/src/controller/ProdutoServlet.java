@@ -36,9 +36,22 @@ public class ProdutoServlet extends HttpServlet {
 			}
 			break;
 		case "Alterar":
-			
+			int idProduto = Integer.parseInt(request.getParameter("txtId"));
+			try {
+				Produto produto = ProdutoDAO.buscarProdutoPorId(idProduto);
+				produto.setNome(request.getParameter("txtNome"));
+				produto.setPreco(Double.parseDouble(request.getParameter("txtPreco")));
+				produto.setQuantidade(Integer.parseInt(request.getParameter("txtQuantidade")));
+				produto.setCategoria(request.getParameter("txtCategoria"));
+				if (ProdutoDAO.alterarProduto(produto)) {
+					response.sendRedirect("AlterarProduto.jsp?mensagem=2&idProduto=" + idProduto);
+				} else {
+					response.sendRedirect("AlterarProduto.jsp?mensagem=3&idProduto=" + idProduto);
+				}
+			} catch (NumberFormatException e) {
+				response.sendRedirect("AlterarProduto.jsp?mensagem=1&idProduto=" + idProduto);
+			}
 			break;
-
 		default:
 			break;
 		}

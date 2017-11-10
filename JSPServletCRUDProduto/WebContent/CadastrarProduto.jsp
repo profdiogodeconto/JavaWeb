@@ -2,25 +2,25 @@
 	pageEncoding="UTF-8"%>
 
 <%-- Comentário --%>
-<% 
- 		String parametro = request.getParameter("mensagem"); 
- 		String mensagem = "";
- 		String classe = "";
- 		if(parametro != null){
-	 		if(parametro.equals("1")){
-	 			mensagem = "Preço ou quantidade em formato incorreto";
-	 			classe = "text-warning";
-	 		}else{
-	 			if(parametro.equals("2")){
-	 				mensagem = "Produto cadastrado com sucesso!";
-	 				classe = "text-success";
-	 			}else{
-	 				mensagem = "Produto já existente!";
-	 				classe = "text-danger";
-	 			}
-	 		}
- 		}
- 	%>
+<%
+	String parametro = request.getParameter("mensagem");
+	String mensagem = "";
+	String classe = "";
+	if (parametro != null) {
+		if (parametro.equals("1")) {
+			mensagem = "Preço ou quantidade em formato incorreto";
+			classe = "text-warning";
+		} else {
+			if (parametro.equals("2")) {
+				mensagem = "Produto cadastrado com sucesso!";
+				classe = "text-success";
+			} else {
+				mensagem = "Produto já existente!";
+				classe = "text-danger";
+			}
+		}
+	}
+%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -83,7 +83,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="<%= classe %>"> <%= mensagem %>
+					<label class="<%=classe%>"> <%=mensagem%>
 					</label>
 				</div>
 			</fieldset>
