@@ -9,16 +9,32 @@
 	<h:form>
 		<h:panelGrid columns="2">
 			<h:outputLabel value="Nome:"></h:outputLabel>
-			<h:inputText></h:inputText>
+			<h:inputText value="#{mProdutoBean.produto.nome}"></h:inputText>
+			
 			<h:outputLabel value="Preço:"></h:outputLabel>
-			<h:inputText></h:inputText>
+			<h:inputText value="#{mProdutoBean.produto.preco}"></h:inputText>
+			
 			<h:outputLabel value="Quantidade:"></h:outputLabel>
-			<h:inputText></h:inputText>
+			<h:inputText value="#{mProdutoBean.produto.quantidade}"></h:inputText>
+			
 			<h:outputLabel value="Categoria:"></h:outputLabel>
-			<h:inputText></h:inputText>
-			<h:commandButton value="Cadastrar Produto">
+			<h:inputText value="#{mProdutoBean.produto.categoria}"></h:inputText>
+			
+			<h:commandButton value="Cadastrar Produto" 
+			action="#{mProdutoBean.adicionarProduto(mProdutoBean.produto)}">
 			</h:commandButton>
 		</h:panelGrid>
 	</h:form>
 </h:body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
