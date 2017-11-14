@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:h="http://java.sun.com/jsf/html">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	
 <h:head>
 	<meta charset="UTF-8" />
 	<title>Cadastrar Produto</title>
@@ -8,21 +12,21 @@
 <h:body>
 	<h:form>
 		<h:panelGrid columns="2">
-			<h:outputLabel value="Nome:"></h:outputLabel>
-			<h:inputText value="#{mProdutoBean.produto.nome}"></h:inputText>
+			<p:outputLabel value="Nome:"></p:outputLabel>
+			<p:inputText pt:placeholder="Nome do produto" value="#{mProdutoBean.produto.nome}"></p:inputText>
 			
-			<h:outputLabel value="Preço:"></h:outputLabel>
-			<h:inputText value="#{mProdutoBean.produto.preco}"></h:inputText>
+			<p:outputLabel value="Preço:"></p:outputLabel>
+			<p:inputText pt:placeholder="Preço do produto"  value="#{mProdutoBean.produto.preco}"></p:inputText>
 			
-			<h:outputLabel value="Quantidade:"></h:outputLabel>
-			<h:inputText value="#{mProdutoBean.produto.quantidade}"></h:inputText>
+			<p:outputLabel value="Quantidade:"></p:outputLabel>
+			<p:inputText  pt:placeholder="Quantidade do produto" value="#{mProdutoBean.produto.quantidade}"></p:inputText>
 			
-			<h:outputLabel value="Categoria:"></h:outputLabel>
-			<h:inputText value="#{mProdutoBean.produto.categoria}"></h:inputText>
+			<p:outputLabel value="Categoria:"></p:outputLabel>
+			<p:inputText  pt:placeholder="Categoria do produto" value="#{mProdutoBean.produto.categoria}"></p:inputText>
 			
-			<h:commandButton value="Cadastrar Produto" 
+			<p:commandButton value="Cadastrar Produto" 
 			action="#{mProdutoBean.adicionarProduto(mProdutoBean.produto)}">
-			</h:commandButton>
+			</p:commandButton>
 		</h:panelGrid>
 	</h:form>
 </h:body>
