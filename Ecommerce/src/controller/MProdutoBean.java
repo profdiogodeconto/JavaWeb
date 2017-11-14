@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.ArrayList;
+
 import javax.faces.bean.ManagedBean;
 
 import dal.ProdutoDAO;
@@ -9,6 +11,11 @@ import model.Produto;
 public class MProdutoBean {
 	
 	private Produto produto = new Produto();
+	private ArrayList<Produto> produtos = new ArrayList<Produto>();	
+
+	public ArrayList<Produto> getProdutos() {
+		return ProdutoDAO.listarProdutos();
+	}
 
 	public Produto getProduto() {
 		return produto;
