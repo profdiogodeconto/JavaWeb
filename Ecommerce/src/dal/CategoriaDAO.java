@@ -23,7 +23,7 @@ public class CategoriaDAO {
 		return false;
 	}
 
-	public static ArrayList<Categoria> listarProdutos() {
+	public static ArrayList<Categoria> listarCategorias() {
 		return categorias;
 	}
 

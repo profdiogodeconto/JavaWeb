@@ -6,7 +6,11 @@ public class Produto {
 	private String nome;
 	private double preco;
 	private int quantidade;
-	private String categoria;
+	private Categoria categoria;
+	
+	public Produto(){
+		categoria = new Categoria();
+	}
 	
 	public int getId() {
 		return id;
@@ -32,10 +36,10 @@ public class Produto {
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
-	public String getCategoria() {
+	public Categoria getCategoria() {
 		return categoria;
 	}
-	public void setCategoria(String categoria) {
+	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 

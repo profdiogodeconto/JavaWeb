@@ -12,6 +12,15 @@ public class MProdutoBean {
 
 	private Produto produto = new Produto();
 	private ArrayList<Produto> produtos = new ArrayList<Produto>();
+	private int idCategoria;
+
+	public int getIdCategoria() {
+		return idCategoria;
+	}
+
+	public void setIdCategoria(int idCategoria) {
+		this.idCategoria = idCategoria;
+	}
 
 	public ArrayList<Produto> getProdutos() {
 		return ProdutoDAO.listarProdutos();
@@ -27,6 +36,7 @@ public class MProdutoBean {
 
 	// Action
 	public String adicionarProduto(Produto p) {
+		
 		ProdutoDAO.cadastrarProduto(p);
 		produto = new Produto();
 		return "ListarProdutos.xhtml?faces-redirect=true";

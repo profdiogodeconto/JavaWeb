@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
 	<meta charset="UTF-8" />
@@ -25,8 +26,15 @@
 				value="#{mProdutoBean.produto.quantidade}"></p:inputText>
 
 			<p:outputLabel value="Categoria:"></p:outputLabel>
-			<p:inputText pt:placeholder="Categoria do produto"
-				value="#{mProdutoBean.produto.categoria}"></p:inputText>
+			<p:selectOneMenu value="#{mProdutoBean.idCategoria}">
+				<f:selectItem itemLabel=" -- Selecione -- " itemValue="0">
+				</f:selectItem>
+
+				<f:selectItems value="#{mCategoriaBean.categorias}"
+					var="categoriaCadastrada" itemLabel="#{categoriaCadastrada.nome}"
+					itemValue="#{categoriaCadastrada.id}">
+				</f:selectItems>
+			</p:selectOneMenu>
 
 			<p:commandButton value="Cadastrar Produto"
 				action="#{mProdutoBean.adicionarProduto(mProdutoBean.produto)}">
