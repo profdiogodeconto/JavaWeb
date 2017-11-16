@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<meta charset="UTF-8" />
 	<title>Listar Produtos</title>
 </h:head>
 <h:body>
-	<p:dataTable value="#{mProdutoBean.produtos}" var="produtoCadastrado">
-		<p:column headerText="Id">
-			<h:outputText value="#{produtoCadastrado.id}" />
-		</p:column>
-		<p:column headerText="Nome">
-			<h:outputText value="#{produtoCadastrado.nome}" />
-		</p:column>
-		<p:column headerText="Preço">
-			<h:outputText value="#{produtoCadastrado.preco}" />
-		</p:column>
-		<p:column headerText="Quantidade">
-			<h:outputText value="#{produtoCadastrado.quantidade}" />
-		</p:column>
-		<p:column headerText="Categoria">
-			<h:outputText value="#{produtoCadastrado.categoria.nome}" />
-		</p:column>
-	</p:dataTable>
-
+	<ui:composition template="Template.xhtml">
+		<ui:define name="conteudoCentral">
+			<p:dataTable value="#{mProdutoBean.produtos}" var="produtoCadastrado">
+				<p:column headerText="Id">
+					<h:outputText value="#{produtoCadastrado.id}" />
+				</p:column>
+				<p:column headerText="Nome">
+					<h:outputText value="#{produtoCadastrado.nome}" />
+				</p:column>
+				<p:column headerText="Preço">
+					<h:outputText value="#{produtoCadastrado.preco}" />
+				</p:column>
+				<p:column headerText="Quantidade">
+					<h:outputText value="#{produtoCadastrado.quantidade}" />
+				</p:column>
+				<p:column headerText="Categoria">
+					<h:outputText value="#{produtoCadastrado.categoria.nome}" />
+				</p:column>
+			</p:dataTable>
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>
