@@ -28,6 +28,7 @@ public class MProdutoBean {
 	// Action
 	public String adicionarProduto(Produto p) {
 		ProdutoDAO.cadastrarProduto(p);
+		produto = new Produto();
 		return "ListarProdutos.xhtml?faces-redirect=true";
 	}
 
