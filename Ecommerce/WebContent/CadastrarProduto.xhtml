@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
 	<meta charset="UTF-8" />
@@ -10,29 +12,41 @@
 </h:head>
 
 <h:body>
-	<h:form>
-		<h:panelGrid columns="2">
-			<p:outputLabel value="Nome:"></p:outputLabel>
-			<p:inputText pt:placeholder="Nome do produto"
-				value="#{mProdutoBean.produto.nome}"></p:inputText>
+	<!-- Componente que define a página de template -->
+	<ui:composition template="Template.xhtml">
+		<ui:define name="conteudoCentral">
+			<h:form>
+				<h:panelGrid columns="2">
+					<p:outputLabel value="Nome:"></p:outputLabel>
+					<p:inputText pt:placeholder="Nome do produto"
+						value="#{mProdutoBean.produto.nome}"></p:inputText>
 
-			<p:outputLabel value="Preço:"></p:outputLabel>
-			<p:inputText pt:placeholder="Preço do produto"
-				value="#{mProdutoBean.produto.preco}"></p:inputText>
+					<p:outputLabel value="Preço:"></p:outputLabel>
+					<p:inputText pt:placeholder="Preço do produto"
+						value="#{mProdutoBean.produto.preco}"></p:inputText>
 
-			<p:outputLabel value="Quantidade:"></p:outputLabel>
-			<p:inputText pt:placeholder="Quantidade do produto"
-				value="#{mProdutoBean.produto.quantidade}"></p:inputText>
+					<p:outputLabel value="Quantidade:"></p:outputLabel>
+					<p:inputText pt:placeholder="Quantidade do produto"
+						value="#{mProdutoBean.produto.quantidade}"></p:inputText>
 
-			<p:outputLabel value="Categoria:"></p:outputLabel>
-			<p:inputText pt:placeholder="Categoria do produto"
-				value="#{mProdutoBean.produto.categoria}"></p:inputText>
+					<p:outputLabel value="Categoria:"></p:outputLabel>
+					<p:selectOneMenu value="#{mProdutoBean.idCategoria}">
+						<f:selectItem itemLabel=" -- Selecione -- " itemValue="0">
+						</f:selectItem>
 
-			<p:commandButton value="Cadastrar Produto"
-				action="#{mProdutoBean.adicionarProduto(mProdutoBean.produto)}">
-			</p:commandButton>
-		</h:panelGrid>
-	</h:form>
+						<f:selectItems value="#{mCategoriaBean.categorias}"
+							var="categoriaCadastrada" itemLabel="#{categoriaCadastrada.nome}"
+							itemValue="#{categoriaCadastrada.id}">
+						</f:selectItems>
+					</p:selectOneMenu>
+
+					<p:commandButton value="Cadastrar Produto"
+						action="#{mProdutoBean.adicionarProduto(mProdutoBean.produto)}">
+					</p:commandButton>
+				</h:panelGrid>
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>
 

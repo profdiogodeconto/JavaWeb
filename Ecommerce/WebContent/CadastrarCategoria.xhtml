@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Cadastrar Categorias</title>
+</h:head>
+
+<h:body>
+	<ui:composition template="Template.xhtml">
+		<ui:define name="conteudoCentral">
+			<h:form>
+				<h:panelGrid columns="2">
+					<p:outputLabel value="Nome:"></p:outputLabel>
+					<p:inputText pt:placeholder="Nome da categoria"
+						value="#{mCategoriaBean.categoria.nome}"></p:inputText>
+
+					<p:outputLabel value="Descrição:"></p:outputLabel>
+					<p:inputText pt:placeholder="Descrição da categoria"
+						value="#{mCategoriaBean.categoria.descricao}"></p:inputText>
+
+					<p:commandButton value="Cadastrar Categoria"
+						action="#{mCategoriaBean.adicionarCategoria(mCategoriaBean.categoria)}">
+					</p:commandButton>
+				</h:panelGrid>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
