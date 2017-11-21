@@ -3,6 +3,7 @@ package dal;
 import java.util.ArrayList;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import model.Categoria;
 import model.Produto;
@@ -21,25 +22,43 @@ public class CategoriaDAO {
 	}
 
 	public static ArrayList<Categoria> listarCategorias() {
-		return categorias;
+		EntityManager em = Conexao.getEntityManager();
+		Query q = em.createQuery("SELECT c FROM Categoria c");
+		ArrayList<Categoria> categoriasBanco = 
+				(ArrayList<Categoria>) q.getResultList();
+		em.close();
+		return categoriasBanco;
 	}
 
 	public static Categoria buscarCategoriaPorNome(Categoria categoria) {
-
-		for (Categoria categoriaCadastrada : categorias) {
-			if (categoriaCadastrada.getNome().equals(categoria.getNome())) {
-				return categoriaCadastrada;
-			}
-		}
-		return null;
+		EntityManager em = Conexao.getEntityManager();
+		Query q = 
+				em.createQuery
+				("SELECT c FROM Categoria c WHERE c.nome = :nomeCategoria");
+		
+		q.setParameter("nomeCategoria", categoria.getNome());
+		
+		ArrayList<Categoria> categoriasBanco = (ArrayList<Categoria>) q.getResultList();
+		em.close();
+		
+		return categoriasBanco.get(0);
 	}
 
 	public static Categoria buscarCategoriaPorId(int idCategoria) {
-		for (Categoria categoriaCadastrada : categorias) {
-			if (categoriaCadastrada.getId() == idCategoria) {
-				return categoriaCadastrada;
-			}
-		}
-		return null;
+		EntityManager em = Conexao.getEntityManager();
+		Categoria c = em.find(Categoria.class, idCategoria);
+		em.close();
+		return c;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
