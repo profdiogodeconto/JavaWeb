@@ -2,6 +2,8 @@ package dal;
 
 import java.util.ArrayList;
 
+import javax.persistence.EntityManager;
+
 import model.Categoria;
 import model.Produto;
 
@@ -10,17 +12,12 @@ public class CategoriaDAO {
 	private static ArrayList<Categoria> categorias = new ArrayList<Categoria>();
 
 	public static boolean cadastrarCategoria(Categoria categoria) {
-		if (categorias.size() > 0) {
-			int id = categorias.get(categorias.size() - 1).getId() + 1;
-			categoria.setId(id);
-		} else {
-			categoria.setId(1);
-		}
-		if (buscarCategoriaPorNome(categoria) == null) {
-			categorias.add(categoria);
-			return true;
-		}
-		return false;
+		EntityManager em = Conexao.getEntityManager();
+		em.getTransaction().begin();
+		em.persist(categoria);
+		em.getTransaction().commit();
+		em.close();
+		return true;
 	}
 
 	public static ArrayList<Categoria> listarCategorias() {
