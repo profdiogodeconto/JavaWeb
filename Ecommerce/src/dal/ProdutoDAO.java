@@ -2,6 +2,10 @@ package dal;
 
 import java.util.ArrayList;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import model.Categoria;
 import model.Produto;
 
 public class ProdutoDAO {
@@ -9,21 +13,21 @@ public class ProdutoDAO {
 	private static ArrayList<Produto> produtos = new ArrayList<Produto>();
 
 	public static boolean cadastrarProduto(Produto produto) {
-		if (produtos.size() > 0) {
-			int id = produtos.get(produtos.size() - 1).getId() + 1;
-			produto.setId(id);
-		} else {
-			produto.setId(1);
-		}
-		if (buscarProdutoPorNome(produto) == null) {
-			produtos.add(produto);
-			return true;
-		}
-		return false;
+		EntityManager em = Conexao.getEntityManager();
+		em.getTransaction().begin();
+		em.persist(produto);
+		em.getTransaction().commit();
+		em.close();
+		return true;
 	}
 
 	public static ArrayList<Produto> listarProdutos() {
-		return produtos;
+		EntityManager em = Conexao.getEntityManager();
+		Query q = em.createQuery("SELECT p FROM Produto p");
+		ArrayList<Produto> produtosBanco = 
+				(ArrayList<Produto>) q.getResultList();
+		em.close();
+		return produtosBanco;
 	}
 
 	public static Produto buscarProdutoPorNome(Produto produto) {
@@ -45,12 +49,13 @@ public class ProdutoDAO {
 		return null;
 	}
 
-	public static boolean removerProduto(int idProduto) {
-		Produto p = buscarProdutoPorId(idProduto);
-		if (p == null) {
-			return false;
-		}
-		produtos.remove(p);
+	public static boolean removerProduto(Produto produto) {
+		EntityManager em = Conexao.getEntityManager();
+		em.getTransaction().begin();
+		produto = em.getReference(Produto.class, produto.getId());
+		em.remove(produto);
+		em.getTransaction().commit();
+		em.close();
 		return true;
 	}
 

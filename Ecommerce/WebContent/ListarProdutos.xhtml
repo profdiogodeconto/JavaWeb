@@ -10,24 +10,42 @@
 <h:body>
 	<ui:composition template="Template.xhtml">
 		<ui:define name="conteudoCentral">
-			<p:dataTable value="#{mProdutoBean.produtos}" var="produtoCadastrado">
-				<p:column headerText="Id">
-					<h:outputText value="#{produtoCadastrado.id}" />
-				</p:column>
-				<p:column headerText="Nome">
-					<h:outputText value="#{produtoCadastrado.nome}" />
-				</p:column>
-				<p:column headerText="Preço">
-					<h:outputText value="#{produtoCadastrado.preco}" />
-				</p:column>
-				<p:column headerText="Quantidade">
-					<h:outputText value="#{produtoCadastrado.quantidade}" />
-				</p:column>
-				<p:column headerText="Categoria">
-					<h:outputText value="#{produtoCadastrado.categoria.nome}" />
-				</p:column>
-			</p:dataTable>
+			<h:form>
+				<p:dataTable value="#{mProdutoBean.produtos}"
+					var="produtoCadastrado">
+					<p:column headerText="Id">
+						<h:outputText value="#{produtoCadastrado.id}" />
+					</p:column>
+					<p:column headerText="Nome">
+						<h:outputText value="#{produtoCadastrado.nome}" />
+					</p:column>
+					<p:column headerText="Preço">
+						<h:outputText value="#{produtoCadastrado.preco}" />
+					</p:column>
+					<p:column headerText="Quantidade">
+						<h:outputText value="#{produtoCadastrado.quantidade}" />
+					</p:column>
+					<p:column headerText="Categoria">
+						<h:outputText value="#{produtoCadastrado.categoria.nome}" />
+					</p:column>
+					<p:column headerText="Remover">
+						<p:commandLink value="Remover"
+							action="#{mProdutoBean.removerProduto(produtoCadastrado)}" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
 		</ui:define>
 	</ui:composition>
 </h:body>
 </html>
+
+
+
+
+
+
+
+
+
+
+

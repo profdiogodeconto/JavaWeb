@@ -10,8 +10,6 @@ import model.Produto;
 
 public class CategoriaDAO {
 
-	private static ArrayList<Categoria> categorias = new ArrayList<Categoria>();
-
 	public static boolean cadastrarCategoria(Categoria categoria) {
 		EntityManager em = Conexao.getEntityManager();
 		em.getTransaction().begin();

@@ -44,6 +44,11 @@ public class MProdutoBean {
 		produto = new Produto();
 		return "ListarProdutos.xhtml?faces-redirect=true";
 	}
+	
+	public String removerProduto(Produto p){
+		ProdutoDAO.removerProduto(p);
+		return "ListarProdutos.xhtml?faces-redirect=true";
+	}
 
 }
 
@@ -52,3 +57,10 @@ public class MProdutoBean {
 // Criar atributo do modelo
 // Criar os getters and setters do atributo
 // Criar a Action
+
+
+
+
+
+
+
